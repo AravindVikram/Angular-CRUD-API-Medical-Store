@@ -1,0 +1,55 @@
+ <!-- medicine-list.component.html -->
+
+
+<div class="container">
+    <br><div class="col-md-12">
+      <!-- <p>Logged in as </p> -->
+      <button routerLink="login" class="btn btn-dark btn-sm float-end" (click)="logout()">Logout</button>   <!-- logout button -->
+    </div>
+    <h4 style="font-weight: bold; text-align: center; padding-left: 30px;">Welcome to Medical Store</h4><br>
+
+    <button class="btn btn-info float-right btn-sm" (click)="onAddMedicine()">Add New Medicine</button>
+<div class="row mb-3">
+  <div class="col-md-12">
+    
+    <div class="search">
+     <form class="d-flex" role="search" (click)="onSearch()">
+       <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" [(ngModel)]="keyword">
+       <button class="btn btn-outline-warning" type="submit">Search</button>
+     </form>
+    </div>
+  </div>
+
+  
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><h5>Medicine Name</h5></th>
+      <th><h5>Company Name</h5></th>
+      <th><h5>Expiry Date</h5></th>
+      <th><h5>Actions</h5></th>
+    </tr>
+  </thead>
+ <tbody>
+    <tr *ngFor="let medicine of medicines" >
+      
+      <td *ngIf="isExpired(medicine.expiry_date)" class="text-danger">{{ medicine.name }}</td>
+      <td *ngIf="!isExpired(medicine.expiry_date)">{{medicine.name}}</td>
+      
+      <td>{{ medicine.company }}</td>
+      <td>{{ medicine.expiry_date }}</td>
+
+      <td>
+        <button class=" btn btn-sm btn-warning" (click)="editMedicine(medicine.id,medicine)">Edit</button>
+        <button class="del btn btn-sm btn-danger" (click)="deleteMedicine(medicine.id)">Delete</button>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>

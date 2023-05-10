@@ -1,0 +1,43 @@
+
+  <div class="container">
+    <br><h3>Register</h3>
+    <br><form (ngSubmit)="submitRegistrationForm(form.value)" #form="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" name="name" ngModel required  class="form-control" aria-describedby="" placeholder="Enter your Name">
+        
+      </div><br>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" ngModel required name="email"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email address">
+      </div><br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" ngModel  name="password" required class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" ngModel required name="password_confirmation"  class="form-control" id="exampleInputPassword1" placeholder="Conform Password">
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br><p>Existing User? <a href="login">Login</a></p> 
+
+    <div *ngIf="errors">
+      <ul>
+        <li *ngIf="errors.name" class="text-danger">{{ errors.name }}</li>
+        <li *ngIf="errors.email" class="text-danger">{{ errors.email }}</li>
+        <li *ngIf="errors.password" class="text-danger">{{ errors.password }}</li>
+        <li *ngIf="errors.password_confirmation" class="text-danger">{{ errors.password_confirmation }}</li>
+      </ul>
+    </div>
+    </div>
+
+    
+
+  
+  
+  
+  
